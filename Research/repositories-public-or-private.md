@@ -1,6 +1,7 @@
 # Repositories: Private or Public?
 While setting up my CI/CD pipelines on github, I ran into this issue where our github runners would not pick up jobs waiting to be executed. After typing some random stuff into google, I found out this was happening because the jobs came from a git repository set to public. The easy solution was to just allow jobs from public repositories on our github runners, but then I stumbled upon this note:
-![](images/AllowPublicRepoOnRunnerNote.PNG)"Allowing self-hosted runners on public repositories and allowing workflows on public forks introduces a significant security risk."
+![](../images/AllowPublicRepoOnRunnerNote.PNG)
+"Allowing self-hosted runners on public repositories and allowing workflows on public forks introduces a significant security risk."
 As our github runners are not isolated in a virtual machine and are being hosted on the same machine as most of the MCS Services, this sounded like something I had to dive in a little deeper before simply enabling it.
 
 ### What is the risk of allowing jobs from a public repository?
