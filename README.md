@@ -70,8 +70,12 @@ I’ve created a few user stories to make the project and its functionality more
 ## Front End
 For the front-end part of the application I have to use a JavaScript framework. After a bit of research about what options are available. It quickly comes down to Vue and React.  I haven’t done a lot with JavaScript before so I played around a little with both of the frameworks to see which one I would like more. I found out that anything and everything is possible with both of the frameworks, but React felt more intuitive to me. As a result I have chosen to build my front-end with ReactJS.
 
+Click [here](https://github.com/MC-Synergy/MCSAnalyser-FrontEnd) to go to the front end repository
+
 ## Back End
 For the back-end part of the application I want to work with an object oriented language. This means the big options are C# and Java. It’s important for a software engineer to be able to learn and apply new technologies. I have been using C# in the last two semesters and really want to expand my knowledge towards Java. I have no experience with Java at this point, but it’s one of the most used object oriented languages for back-end applications. One of the best Java frameworks for REST applications is Java Spring. This is also what I will be using for my project.
+
+Click [here](https://github.com/MC-Synergy/MCSAnalyser-API) to go to the back end repository
 
 ## Persistence
 One of the (few) mandatory things this semester is that I learn about an Object-Relational Mapper and how to apply that knowledge in my project. Object relational mapping is, simply said, a technique that lets you manage data in database without having to write data access logic (because the ORM serves as the data access layer!). ORM has a lot of pros and cons, they can for example be very overwhelming to use and aren’t always the most performant. Nonetheless ORM’s can be super useful to abstract your database and save you a lot of time.
