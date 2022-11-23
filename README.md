@@ -195,8 +195,7 @@ jobs:
       - name: Push to registry
         run: sudo docker push registry.mcsynergy.nl/mcsa-frontend:latest
 ```
-The delivery workflow runs the dockerfile to create a new image, then logs in to the registry and pushes the new image. The reason why I have chosen to host my own registry is because on the docker-hosted registry you have to pay to store more than 1 private image. I want to store atleast 2 private images and probably even more in the future.
-registry authentication
+The delivery workflow runs the dockerfile to create a new image, then logs in to the registry and pushes the new image. The reason why I have chosen to host my own registry is because on the docker-hosted registry you have to pay to store more than 1 private image. I want to store atleast 2 private images and probably even more in the future. The registry is authenticated using basic username and password authentication.
 
 ## Deployment
 At home I have a super old intel NUC that serves as my server. To be able to really use my application I had to deploy the Docker images stored in my registry as Docker containers. To do this I have written a docker-compose file for each application. 
@@ -253,5 +252,23 @@ This is the docker-compose file for the back end of my project. It spins up two 
 
 To automatically deploy a new container when a new image is pushed to the registry, I use watchtower. I have set up a watchtower container that checks for new images every minute. As soon as it realises a new image has been delivered, it shuts down the old container and boots up a new container with the same configuration. It also holds track of which containers are dependend of others and will take action accordingly.
 
-To be able to access the containers, I have a domain name set to my IP Address which can be checked out [here](https://mcsynergy.nl).
-reverse proxy, nginx, subdomains, secure SSL connection, certbot, lets encrypt, 
+To be able to access the containers, I have a domain name set to my IP Address which can be checked out [here](https://mcsynergy.nl). I use NGINX as a reverse proxy which means - very simply said - that it will make sure your request is handled by the right container.
+``` nginx
+server {
+        listen 443;
+        server_name registry.mcsynergy.nl;
+
+        location / {
+                proxy_pass http://localhost:5000/v2;
+        }
+
+        location /v2 {
+                client_max_body_size 2000M;
+                proxy_pass http://localhost:5000/v2;
+        }
+    ssl_certificate /etc/letsencrypt/live/mcsynergy.nl/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/mcsynergy.nl/privkey.pem; # managed by Certbot
+}
+```
+!["Registry Container"](/images/RegistryDockerContainer.PNG)
+When I send a request to "https://registry.mcsynergy.nl", I want it to go to the registry. And when I send a request to "https://www.mcsynergy.nl", I want it to go to the front end container. All these subdomains point to the same IP Address, but NGINX handles them differently. I have also setup a secure SSL connection using certbot and lets encrypt. This will help with securing the data being send to and from the client while also scoring some extra SEO (Search Engine Optimization) points.
