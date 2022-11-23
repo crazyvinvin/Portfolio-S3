@@ -1,7 +1,27 @@
 # Portfolio S3
 
 ## Table of Contents
-TODO
+- [Portfolio S3](#portfolio-s3)
+  * [Table of Contents](#table-of-contents)
+  * [Introduction](#introduction)
+- [F1 Guesser](#f1-guesser)
+  * [Project Description](#project-description)
+  * [Full-Stack Web Application](#full-stack-web-application)
+  * [Requirements](#requirements)
+  * [Conclusion](#conclusion)
+- [Project MCS Analyser](#project-mcs-analyser)
+  * [Project Description](#project-description-1)
+  * [But what is MCS-CC?](#but-what-is-mcs-cc-)
+  * [User Stories](#user-stories)
+  * [Front End](#front-end)
+  * [Back End](#back-end)
+  * [Persistence](#persistence)
+  * [External Services](#external-services)
+  * [Systems and Services](#systems-and-services)
+  * [Continuous Integration & Delivery](#continuous-integration---delivery)
+    + [Integration](#integration)
+    + [Delivery](#delivery)
+  * [Deployment](#deployment)
 
 ## Introduction
 This semester has the goal to build a full-stack web application as an individual project. Together with this application there are many learning outcomes which should be achieved. This document will show how I worked towards my so called LO’s. Besides the individual project there is also a group project which you can learn more about in my group project portfolio.
