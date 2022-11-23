@@ -92,3 +92,166 @@ To create a better understanding of how the different MCS Services interact with
 ## Systems and Services
 In this document there has been a lot of talk about MCS Systems and MCS Services, but what is the difference? MCS Systems are the systems inside the Minecraft server. For example a farm that produces melons and pumpkins is called an MCS System. All the systems are registered at the MCS Systems API. MCS Services are the things we build outside of the Minecraft server. For example the MCS Analyser and the MCS Turtle Tracker are both MCS Services.
 
+## Continuous Integration & Delivery
+Integrating new code into an application takes developers a lot of time. That's why I have automated the integration, delivery and deployment of new code. To automate this process I have created workflows with GitHub Actions. These workflows are triggerd on push or accepted pull requests on the development and main branches of the projects. There are workflows for building and testing the code, aswell as there are workflows for building and delivering docker images to a self-hosted docker registry.
+
+Workflows exist of jobs that are run so called GitHub Runners. We are currently hosting our own GitHub Runners, however I really wanted to set my GitHub Repository to public but this came with some complications. You can read more about this in my Research Article: [Repositories: Private or Public?](https://github.com/crazyvinvin/Portfolio-S3/blob/main/Research/repositories-public-or-private.md)
+
+### Integration
+When a pull request is opened against the development or main branch of the front end repository or when a push to the development branch happens, the integration workflow is run.
+
+``` yaml
+# integrate.yml
+---
+name: integrate
+
+on:
+  pull_request: 
+    branches: ["main", "dev"]
+  push:
+    branches: ["dev"]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18.12.1
+      - name: setup git config
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "<>"
+        
+      - name: install dependencies
+        run: npm ci
+      
+      - name: Build code
+        run: npm run build
+```
+The integration workflow has a job that build the application. If the code has build errors, the workflow will fail which will be visisble on github and it will also be emailed to the developer. The integration workflow will also be running a test job.
+
+### Delivery
+To deliver new code, a few steps have to be processed:
+- Build the code
+- Build the Docker image
+- Login to self-hosted registry
+- Push Docker image to registry
+
+``` Dockerfile
+# Dockerfile
+FROM node:19-alpine as builder
+WORKDIR /app
+
+COPY package*.json ./
+
+RUN npm ci
+
+COPY . .
+
+RUN npm run build
+
+FROM nginx:1.23.1-alpine as production
+ENV NODE_ENV production
+COPY --from=builder /app/build /usr/share/nginx/html
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+CMD ["nginx", "-g", "daemon off;"]
+```
+
+The docker file is responsible for installing the code's dependencies, building the code and then building the Docker image.
+
+``` yaml
+# deliver.yml
+---
+name: Deliver
+
+on: 
+  push:
+    branches: ["main"]
+  pull_request_review:
+    types: [submitted]
+  workflow_dispatch:
+
+jobs:
+  Docker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Login to registry
+        run: >
+          echo ${{ secrets.REGISTRY_PASSWORD }}
+          | sudo docker login registry.mcsynergy.nl
+          -u ${{ secrets.REGISTRY_USERNAME }} --password-stdin
+      
+      - name: Build image
+        run: >
+          sudo docker build . --file Dockerfile
+          --tag registry.mcsynergy.nl/mcsa-frontend:latest
+      
+      - name: Push to registry
+        run: sudo docker push registry.mcsynergy.nl/mcsa-frontend:latest
+```
+The delivery workflow runs the dockerfile to create a new image, then logs in to the registry and pushes the new image. The reason why I have chosen to host my own registry is because on the docker-hosted registry you have to pay to store more than 1 private image. I want to store atleast 2 private images and probably even more in the future.
+registry authentication
+
+## Deployment
+At home I have a super old intel NUC that serves as my server. To be able to really use my application I had to deploy the Docker images stored in my registry as Docker containers. To do this I have written a docker-compose file for each application. 
+
+``` yaml
+# docker-compose.yml
+version: '3.8'
+
+name: MCSAnalyser
+networks:
+  mcsa-net:
+    external: true
+
+services:
+  mcsa-server:
+    container_name: MCSA-API
+    restart: always
+    environment:
+      SPRING_DATASOURCE_URL: 'jdbc:mysql://MCSA-Database:3306/mcsaDB'
+      SPRING_DATASOURCE_USERNAME: 'root'
+      SPRING_DATASOURCE_PASSWORD: '****'
+      SPRING_JPA_HIBERNATE_DDL-AUTO: 'update'
+      SPRING_JPA_DATABASE-PLATFORM: 'org.hibernate.dialect.MySQL5InnoDBDialect'
+      SERVER.SERVLET.CONTEXT-PATH: ''
+      CREATEDATABASEIFNOTEXISTS: true
+      SERVER_PORT: 8081
+      SERVER_ADDRESS: 0.0.0.0
+    image: registry.mcsynergy.nl/mcsaserver:latest
+    ports:
+      - "8081:8081"
+    depends_on:
+      - mcsa-db
+    networks: 
+      - mcsa-net
+
+  mcsa-db:
+    image: mysql:latest
+    restart: always
+    container_name: MCSA-Database
+    environment:
+      MYSQL_DATABASE: 'mcsaDB'
+      MYSQL_ROOT_PASSWORD: '****'
+    ports:
+      - "18701:3306"
+    volumes:
+      - mcsa-db-volume:/var/lib/mysql
+    networks:
+      - mcsa-net
+
+volumes:
+  mcsa-db-volume:
+```
+This is the docker-compose file for the back end of my project. It spins up two containers, one that serves as the database and one based on the image from my code. A network is created for the database and java application to communicate to eachother. I have made sure that the MySQL container starts before the java application starts. This is done by teling docker that the java application depends on the database.
+
+To automatically deploy a new container when a new image is pushed to the registry, I use watchtower. I have set up a watchtower container that checks for new images every minute. As soon as it realises a new image has been delivered, it shuts down the old container and boots up a new container with the same configuration. It also holds track of which containers are dependend of others and will take action accordingly.
+
+To be able to access the containers, I have a domain name set to my IP Address which can be checked out [here](https://mcsynergy.nl).
+reverse proxy, nginx, subdomains, secure SSL connection, certbot, lets encrypt, 
