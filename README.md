@@ -27,7 +27,7 @@
   * [Deployment](#deployment)
 
 ## Introduction
-This semester has the goal to build a full-stack web application as an individual project. Together with this application there are many learning outcomes which should be achieved. This document will show how I worked towards my so called LO’s. Besides the individual project there is also a group project which you can learn more about in my group project portfolio.
+This semester has the goal to work on a group project for an external company and to build a Full-Stack web application as an individual project. Together with these projects there are many learning outcomes that should be achieved. This document will show how I worked towards my so called LO’s.
 
 # F1 Guesser
 
@@ -35,7 +35,7 @@ This semester has the goal to build a full-stack web application as an individua
 For my individual project, I want to build a web application where you can guess Formula One race outcomes against your friends to compete for the most points at the end of the Formula One season.
 
 ## Full-Stack Web Application
-The application should consist of a separate front-end and back-end. The back-end should be build using an Object Oriented application framework whereas the front-end needs to use a JavaScript framework.
+The application should consist of a separate front-end and back-end. The back-end should be build using an Object Oriented framework whereas the front-end needs to use a JavaScript framework.
 
 ## Requirements
 I’ve created a few simple requirements to give a better understanding about the project and the functionality that will be available.
@@ -92,14 +92,14 @@ I’ve created a few user stories to make the project and its functionality more
 
 ## Full-Stack Web Application
 ### Front End
-For the front-end part of the application I have to use a JavaScript framework. After a bit of research about what options are available. It quickly comes down to Vue and React.  I haven’t done a lot with JavaScript before so I played around a little with both of the frameworks to see which one I would like more. I found out that anything and everything is possible with both of the frameworks, but React felt more intuitive to me. As a result I have chosen to build my front-end with ReactJS.
+For the front-end part of the application I have to use a JavaScript framework. After a bit of research about what options are available, it quickly comes down to Vue and React.  I haven’t done a lot with JavaScript before so I played around a little with both of the frameworks to see which one I would like more. I found out that anything and everything is possible with both of the frameworks, but React felt more intuitive to me. As a result I have chosen to build my front-end with ReactJS.
 
-Click [here](https://github.com/MC-Synergy/MCSAnalyser-FrontEnd) to go to the front end repository
+Click [here](https://github.com/MC-Synergy/MCSAnalyser-FrontEnd) to go to the front end repository.
 
 ### Back End
 For the back-end part of the application I want to work with an object oriented language. This means the big options are C# and Java. It’s important for a software engineer to be able to learn and apply new technologies. I have been using C# in the last two semesters and really want to expand my knowledge towards Java. I have no experience with Java at this point, but it’s one of the most used object oriented languages for back-end applications. One of the best Java frameworks for REST applications is Java Spring. This is also what I will be using for my project.
 
-Click [here](https://github.com/MC-Synergy/MCSAnalyser-API) to go to the back end repository
+Click [here](https://github.com/MC-Synergy/MCSAnalyser-API) to go to the back end repository.
 
 ### Persistence
 One of the (few) mandatory things this semester is that I learn about an Object-Relational Mapper and how to apply that knowledge in my project. Object relational mapping is, simply said, a technique that lets you manage data in database without having to write data access logic (because the ORM serves as the data access layer!). ORM has a lot of pros and cons, they can for example be very overwhelming to use and aren’t always the most performant. Nonetheless ORM’s can be super useful to abstract your database and save you a lot of time.
@@ -229,7 +229,7 @@ jobs:
       - name: Push to registry
         run: sudo docker push registry.mcsynergy.nl/mcsa-frontend:latest
 ```
-The delivery workflow runs the dockerfile to create a new image, then logs in to the registry and pushes the new image. The reason why I have chosen to host my own registry is because on the docker-hosted registry you have to pay to store more than 1 private image. I want to store atleast 2 private images and probably even more in the future. The registry is authenticated using basic username and password authentication.
+The delivery workflow runs the dockerfile to create a new image. It then logs in to the registry and pushes the newly created image. The reason why I have chosen to host my own registry is because on the docker-hosted registry you have to pay to store more than 1 private image. I want to store atleast 2 private images and probably even more in the future. The registry is authenticated using basic username and password authentication.
 
 ## Deployment
 At home I have a super old intel NUC that serves as my server. To be able to really use my application I had to deploy the Docker images stored in my registry as Docker containers. To do this I have written a docker-compose file for each application. 
