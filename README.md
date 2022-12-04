@@ -122,9 +122,19 @@ Agile, Research document, github issues, Jira, stakeholders
 laat voorbeeld van een afgewerkte issue zien
 
 ## Quality Assurance
-TODO ------------------- TODO  
-Wat is er nodig om te kunnen zeggen "mijn applicatie werkt"?  
-Wat is belangrijk voor mijn gebruikers? Goede UI? Performance? Reliabilty?
+TODO: inleiding in quality assurance (CI/CD stukje heeft mooi voorbeeld)
+- Wat is er nodig om te kunnen zeggen "mijn applicatie werkt"?
+- Wat is belangrijk voor mijn gebruikers? Goede UI? Performance? Reliabilty?
+tests die ik ga doen: 
+- integration tests
+- performance tests (lighthouse)
+- UX tests
+
+### Integration Tests
+
+### Google Lighthouse (Performance testing and more)
+
+### User Experience Tests
 
 ## Continuous Integration & Delivery
 Integrating new code into an application takes developers a lot of time. That's why I have automated the integration, delivery and deployment of new code. To automate this process I have created workflows with GitHub Actions. These workflows are triggerd on push or accepted pull requests on the development and main branches of the projects. There are workflows for building and testing the code, aswell as there are workflows for building and delivering docker images to a self-hosted docker registry.
