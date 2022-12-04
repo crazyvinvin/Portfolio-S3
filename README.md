@@ -68,7 +68,7 @@ I’ve created a few simple requirements to give a better understanding about th
 ## Conclusion
 After a lot of doubt, I have chosen to change projects. Together with a few friends I have been playing on a Minecraft Server which has a mod (expansion) that adds programmable robots and computers to the game. I have a lot of motivation to build a project which uses data from those robots and computers.
 
-Luckily, I will be able to use the knowledges I got in the last few weeks in my next project.
+Luckily, I will be able to use the knowledge I got in the last few weeks in my next project.
 
 # Project MCS Analyser
 
