@@ -175,7 +175,7 @@ jobs:
       - name: Build code
         run: npm run build
 ```
-The integration workflow has a job that build the application. If the code has build errors, the workflow will fail which will be visisble on github and it will also be emailed to the developer. The integration workflow will also be running a test job.
+The integration workflow has a job that builds the application. If the code has build errors, the workflow will fail which will be visisble on github and it will also be emailed to the developer. The integration workflow will also be running a test job.
 
 ### Delivery
 To deliver new code, a few steps have to be processed:
