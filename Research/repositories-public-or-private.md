@@ -23,3 +23,10 @@ After that I enabled the option to require approval for all outside collaborator
 What we could also do is setup a virtual machine and create a self-hosted runner to be executed inside the virtual machine. We could then configure this runner to allow jobs from public repositories and disable it for the other runners. 
 
 During the writing of this article I found out it is actually free for public repositories to use the github-hosted runners, instead of the maximum of 2000 minutes for private repositories. Using the github runners will always be the safest thing together with setting your repository to private, but setting up and hosting your own runners is definitely more fun.
+<hr />
+
+### Sources  
+- https://docs.github.com/en/actions/hosting-your-own-runners/about-self-hosted-runners
+- https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions#hardening-for-self-hosted-runners
+- https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners#overview-of-github-hosted-runners
+- https://github.com/pricing#compare-features
