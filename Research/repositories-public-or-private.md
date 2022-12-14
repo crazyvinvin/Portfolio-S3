@@ -5,7 +5,7 @@ While setting up my CI/CD pipelines on github, I ran into this issue where our g
 As our github runners are not isolated in a virtual machine and are being hosted on the same machine as most of the MCS Services, this sounded like something I had to dive in a little deeper before simply enabling it.
 
 ### What is the risk of allowing jobs from a public repository?
-The problem with allowing jobs from a public repository is that **anyone can fork your repository**, add a workflow that triggers on a pull request and then create a pull request. The created workflow will then be executed and put its jobs into queue, waiting to be picked up by one of our runners. This makes it possible for anyone to run shell commands on the machine, hosting the runner.
+The problem with allowing jobs from a public repository is that **anyone can fork your repository**, add a workflow that triggers on a pull request and then create a pull request. The created workflow will then be executed and its jobs will be put into a queue, waiting to be picked up by one of our runners. This makes it possible for anyone to run shell commands on the machine, hosting the runner.
 
 ### Why would you want your repository to be public?
 A lot of features like protecting branches or assigning multiple people to one issue are behind a paywall github. However, many of these paywalls can be bypassed by setting your repository to public.
