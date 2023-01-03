@@ -134,7 +134,7 @@ To test if these things are working as needed, I will be doing Integration Tests
 ## Continuous Integration & Delivery
 Integrating new code into an application takes developers a lot of time. That's why I have automated the integration, delivery and deployment of new code. To automate this process I have created workflows with GitHub Actions. These workflows are triggerd on push or accepted pull requests on the development and main branches of the projects. There are workflows for building and testing the code, aswell as there are workflows for building and delivering docker images to a self-hosted docker registry.
 
-Workflows exist of jobs that are run so called GitHub Runners. We are currently hosting our own GitHub Runners, however I really wanted to set my GitHub Repository to public but this came with some complications. You can read more about this in my Research Article: [Repositories: Private or Public?](https://github.com/crazyvinvin/Portfolio-S3/blob/main/Research/repositories-public-or-private.md)
+Workflows exist of jobs that are run so called GitHub Runners. We are currently hosting our own GitHub Runners, however I really wanted to set my GitHub Repository to public but this came with some complications. You can read more about this in my Research Article: [How can I safely allow GitHub Actions Jobs on a public repository?](https://github.com/crazyvinvin/Portfolio-S3/blob/main/Research/safely-allow-actions-on-public-repo.md)
 
 ### Integration
 When a pull request is opened against the development or main branch of the front end repository or when a push to the development branch happens, the integration workflow is run.
