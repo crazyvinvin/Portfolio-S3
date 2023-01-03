@@ -122,13 +122,8 @@ Agile, Research document, github issues, Jira, stakeholders
 laat voorbeeld van een afgewerkte issue zien
 
 ## Quality Assurance
-TODO: inleiding in quality assurance (CI/CD stukje heeft mooi voorbeeld)
-- Wat is er nodig om te kunnen zeggen "mijn applicatie werkt"?
-- Wat is belangrijk voor mijn gebruikers? Goede UI? Performance? Reliabilty?
-tests die ik ga doen: 
-- integration tests
-- performance tests (lighthouse)
-- UX tests
+Assuring the quality of software is one of the most important things in software development as it helps you to find problems before they become an issue. There are many different subjects in software which "the quality can be assured of". For my project a few things are important. First of all, the data that is displayed in the graphs should be correct and not be misleading. Both of these things could lead to misunderstanding of the data that a system produces, which would be a problem for the further development of the system. Second, a user (player from the minecraft server) should be able to easily find what they are looking for and understand the data that a system is producing, even if they don't have an understanding about the development of MCS Systems.
+To test if these things are working as needed, I will be doing Integration Tests and User Experience Tests. I will also be running performance and accessibility tests through google lighthouse, because this will help to find issues with the user experience and google lighthouse can also scan for vulnerability issues.
 
 ### Integration Tests
 
