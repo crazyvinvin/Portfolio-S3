@@ -29,50 +29,7 @@
 ## Introduction
 This semester has the goal to work on a group project for an external company and to build a Full-Stack web application as an individual project. Together with these projects there are many learning outcomes that should be achieved. This document will show how I worked towards my so called LO’s.
 
-# F1 Guesser
-
-## Project Description
-For my individual project, I want to build a web application where you can guess Formula One race outcomes against your friends to compete for the most points at the end of the Formula One season.
-
-## Full-Stack Web Application
-The application should consist of a separate front-end and back-end. The back-end should be build using an Object Oriented framework whereas the front-end needs to use a JavaScript framework.
-
-## Requirements
-I’ve created a few simple requirements to give a better understanding about the project and the functionality that will be available.
-
-**FR-01:** The user should be able to create a playgroup.
-- B-01.1: A maximum of 8 people are allowed per playgroup.
-
-**FR-02:** A user should be able to join a playgroup using a code from another user’s group.
-- B-02.1: If the playgroup is full, the user that wants to join gets a pop-up that says that the playgroup is full.
-
-**FR-03:** The user should be able to see how many points other people in his playgroup have.
-- K-03.1: A user’s points is shown next to the user’s username.
-- K-03.2: The user should be able to see a bar chart of all the points of the members of his playgroup.
-
-**FR-04:** The user should be able to see a countdown to the next race week.
-- K-04.1: A race week is from Monday till Sunday, if there’s a race on Sunday.
-- B-04.2: The time to a next race week is only visible if a race week is not already happening
-
-**FR-05:** The user should be able to go through a round of questions
-- B-05.1: The user can only go through a round of questions during a race week.
-- B-05.2: The user can only go through a round of questions when in a playgroup.
-- K-05.1: During the round the user is able to select a F1 driver to answer each question.
-- K-05.2: During the round the user gets to see how many points are available for each question.
-
-**FR-06:** The user can see what answers other members of his playgroup have selected.
-- B-06.1: The user can only see other member’s answers after having gone through the round of questions himself
-
-**FR-07:** After a race week the user gets the available points for each question answered correctly.
-
-## Conclusion
-After a lot of doubt, I have chosen to change projects. Together with a few friends I have been playing on a Minecraft Server which has a mod (expansion) that adds programmable robots and computers to the game. I have a lot of motivation to build a project which uses data from those robots and computers.
-
-Luckily, I will be able to use the knowledge I got in the last few weeks in my next project.
-
-# Project MCS Analyser
-
-## Project Description
+## Individual Project Description: MCS Analyser
 I want to build a web application that gives users the ability to see and analyse data produced by robots on a Minecraft server. These Robots are part of a mod called MCS-CC.
 
 ### But what is MCS-CC?
@@ -89,6 +46,19 @@ I’ve created a few user stories to make the project and its functionality more
 - US-04: As a user I want to be able to see if a system is turned on or off so that I know why a system is producing different data then before.
 - US-05: As a user I want to be able get a description of a system about it’s service and purpose so that I can understand the data more easily.
 - US-06: As a user I want to be able to create a custom graph with all the data available so that I can compare different systems with each other.
+
+## Bussiness process
+When building software, you're always doing this with a goal. To automate or improve a process that's happening somewhere or to create a new process that wasn't possible without your software. To visualize all the different parts and blocks of a process, a bussiness process model (or BPM for short) can be created. In the world of software a BPM can show how software improves (or worsens) a process.
+
+I will be creating a BPM about how we analyse MCS Systems now and a BPM about the process after the software for my individual project is build. This to visualize the difference between before and after the software is build.
+
+![IP BPM Without Software](images/IP_BPM_WithoutSoftware.png "BPM without software")
+
+Above is the model of the process without using the MCS Analyser software. As you can see it is very cluttered and contains a lot of long loops to manually collect data. This is far from optimal and it's almost impossible to actually make effective changes when collecting and analysing data like this.
+
+![IP BPM Without Software](images/IP_BPM_WithSoftware.png "BPM without software")
+
+This model shows the process using the MCS Analyser software. As seen on the left, players will have to add their system to the MCS Analyser. This is definitely an inconvenience, but cannot be automated. This will however only have to be done once for every system. A guide for players on how to add a system to the MCS Analyser can be found [here](https://github.com/MC-Synergy/MCSAnalyser-FrontEnd#how-can-i-add-my-system-to-the-analyser).
 
 ## Full-Stack Web Application
 ### Front End
@@ -312,3 +282,28 @@ server {
 ```
 !["Registry Container"](/images/RegistryDockerContainer.PNG)
 When I send a request to "https://registry.mcsynergy.nl", I want it to go to the registry. And when I send a request to "https://www.mcsynergy.nl", I want it to go to the front end container. All these subdomains point to the same IP Address, but NGINX handles them differently. I have also setup a secure SSL connection using certbot and lets encrypt. This will help with securing the data being send to and from the client while also scoring some extra SEO (Search Engine Optimization) points.
+
+## Cultural Differences
+When working in a team, you're working with people that are different from eachother and from you. Sometimes this can cause problems, you can act in a way that is accepted and familiar by you but not by one or more members of your team. You're acting with a good heart, but they find it wrong or offensive. In my opinion, this isn't a difference in culture. It's a difference in people.
+
+### Differences at my job
+When I'm working at Jumbo it's often my job to manage our team of employees and make sure we complete the things that have to be done so that we can close the store nice and clean at the end of the day. Over the day I talk to a lot of different employees. Some people I work with are new and need a lot of support, while others are older and have been working at Jumbo for years. The people that have been working at Jumbo for a while often know what they have to do when they arrive, however the newer people need a lot more explanation, which isn't a problem, as long as your speaking the same language.
+
+A few weeks ago we had a new employee join the team. She is from bulgaria and her dutch (my main language) and english aren't great yet. I find it really exciting to work with her, explaining important information to eachother is a puzzle we both find interesting to solve. Especially when dealing with customers it can be difficult sometimes. She first has to explain to the customer that she doesn't speak dutch and then she has to wave in a dutch speaking employee for assistance. However, it's amazing to have a person on the team so different from others as she comes with new ideas to improve and brings something fresh to the workplace.
+
+I don't think differences in "culture" should ever be a problem. As long as people keep communicating and are open to change.
+
+## Professionality
+During the Semester, students are expected to "act in a professional manner during software development and learning by actively asking and applying feedback from stakeholders[...]" (canvas, 2022). To achieve this, I have worked with my teachers and feedpulse and done retrospectives every sprint with the group I worked with for the group project.
+
+### Feedpulse
+When working on a project it's important to keep communicating and reflecting with your stakeholders or in my case, my teachers. During the semester I had discussions with them about my projects and progress. After these conversations, I write down in feedpulse (A tool in Canvas) what I did, what i'll be doing in the next few weeks and what my teacher's thoughts are on these things.
+
+![Feedpulse Example](images/feedpulse_example.PNG "feedpulse_example")
+
+Above is a checkpoint in feedpulse that shows how I kept track of conversations with my teachers.
+
+### Retrospectives
+When working with multiple stakeholders, teammembers and teachers, it's important to reflect every short period of time. A more extensive explanation of why retrospectives are important can be found in my [research document on "working agile"](https://github.com/crazyvinvin/Portfolio-S3/blob/main/Research/Agile.md).
+
+After every sprint (often 3 weeks) our team performs a retrospective. Often with stakeholders or teachers, but sometimes with just the team. I like the way this changes up the retrospectives a bit, however it makes it more difficult to compare the outcome with the sprint before as the retrospective itself has changed.
