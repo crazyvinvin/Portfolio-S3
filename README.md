@@ -29,8 +29,13 @@
 ## Introduction
 This semester has the goal to work on a group project for an external company and to build a Full-Stack web application as an individual project. Together with these projects there are many learning outcomes that should be achieved. This document will show how I worked towards my so called LO’s.
 
+## Individual Project: F1 Guesser
+At the beginning of the semester I first wanted to do a project about Formula 1. In the end I ended up doing another project called: MCS Analyser. More about the F1 project can be found [here](https://github.com/crazyvinvin/Portfolio-S3/blob/main/F1Guesser.md).
+
 ## Individual Project Description: MCS Analyser
 I want to build a web application that gives users the ability to see and analyse data produced by robots on a Minecraft server. These Robots are part of a mod called MCS-CC.
+
+Take a look at the project in action [here](https://analyser.mcsynergy.nl)
 
 ### But what is MCS-CC?
 MCS-CC, also known as Minecraft Synergy Computer Craft, is a by us (the MCS Team) made modification of the popular mod: “CC: Tweaked” (Which is also on itself a modification of another mod). CC: Tweaked adds programmable turtles and computers to Minecraft (Java edition). These turtles are essentially robots that can perform certain actions like digging blocks or moving items from one place to another. To have a turtle (or computer) perform an action you can write a script in a language called Lua which is then ran in the Lua Virtual Machine to actually make the turtle do something.
@@ -54,7 +59,7 @@ I will be creating a BPM about how we analyse MCS Systems now and a BPM about th
 
 ![IP BPM Without Software](images/IP_BPM_WithoutSoftware.png "BPM without software")
 
-Above is the model of the process without using the MCS Analyser software. As you can see it is very cluttered and contains a lot of long loops to manually collect data. This is far from optimal and it's almost impossible to actually make effective changes when collecting and analysing data like this.
+Above is the model of the process without using the MCS Analyser software. As you can see it is very cluttered and contains a lot of long loops to manually collect data. This is far from optimal and makes it almost impossible to actually make effective changes to systems when collecting and analysing data like this.
 
 ![IP BPM Without Software](images/IP_BPM_WithSoftware.png "BPM without software")
 
@@ -87,9 +92,35 @@ To create a better understanding of how the different MCS Services interact with
 In this document there has been a lot of talk about MCS Systems and MCS Services, but what is the difference? MCS Systems are the systems inside the Minecraft server. For example a farm that produces melons and pumpkins is called an MCS System. All the systems are registered at the MCS Systems API. MCS Services are the things we build outside of the Minecraft server. For example the MCS Analyser and the MCS Turtle Tracker are both MCS Services.
 
 ## Project Management
-TODO ------------------ TODO  
-Agile, Research document, github issues, Jira, stakeholders  
-laat voorbeeld van een afgewerkte issue zien
+When working on a project, no matter the size, management is important. However, the way one project should be managed can be really different from another project. Things like teamsize, stakeholders and  time schedules can have a huge influence on the project and will thereby change the way the project should be managed. This semester, I did a group project and an individual project and I found out that these projects had to be managed very different from eachother.
+
+### Group project management
+With a team of 5 software engineering students we did a project for IO, an external company that helps companies grow digitally. We were assigned two stakeholders that would act as our customers. These gave us the task to create an app that would help them find their colleagues more quickly when needed.
+
+To manage this project we chose to work with the scrum framework, which is one of the agile methodologies. More on how we could improve the team by using an Agile Methodology can be found [here](https://github.com/crazyvinvin/Portfolio-S3/blob/main/Research/Agile.md). To work agile we needed a tool to manage user stories and issues. For this we used Jira, a tool for keeping track of issues and managing agile projects. We used Jira, because it was one of the recommended tools by Canvas while also already being used by our stakeholders at IO. 
+
+It took some time for us to get used to working with Jira. Jira itself is already a pretty complex piece of software and our stakeholders had a very specific way of working with it, but after a few weeks we started to get more comfortable using it. 
+
+Not only with a new user story, but also when we needed something from our stakeholders, we would open an issue in Jira. Here is an example:
+
+![Jira ticket example](images/jira_ticket_example.PNG "jira_ticket_example")
+
+When planning the sprint, together with our stakeholders we would select tickets that would be worked on during the sprint. When work started on a ticket we would move it to the "in progress" state. Like the "in progress" state, we had many more states that tickets could be moved to. For example the "Questions for product owners", which was used when questions came up that would put the ticket on hold until they were answered. Here is an example of our Jira board:
+
+![Jira board example](images/jiraboard.png "jira_board_example")
+*This image was taken by Josian van Efferen, a member of the team.
+
+Jira also has a tool to create a sprint burndown chart. A burndown chart shows how a sprint progresses over time. To create a burndown chart, we had to start estimating how much time an issue would take the team to complete and how long it ended up taking us. Accurately estimating how much time an issue would take has been really difficult, however practice makes perfect.
+
+I took up the role as scrum master this semester, acting as the communication point for the stakeholders of IO and ofcourse our teacher. It also was my job to lead the stand ups and other meetings we had with the team while making sure our Jira board stayed updated.
+
+The hardest thing I found as a scrum master has been to keep the team motivated at all times. When a delivery to our stakeholders doesn't go as well as hoped, I found that people would start to distract themselves. Keeping them focused on what had to be done to fix things or to create a better delivery next sprint could sometimes be very difficult. 
+
+### Individual Project management
+
+
+TODO ------------------ TODO
+Research document github issues
 
 ## Quality Assurance
 Assuring the quality of software is one of the most important things in software development as it helps you to find problems before they become an issue. There are many different subjects in software which "the quality can be assured of". For my project a few things are important. First of all, the data that is displayed in the graphs should be correct and not be misleading. Both of these things could lead to misunderstanding of the data that a system produces, which would be a problem for the further development of the system. Second, a user (player from the minecraft server) should be able to easily find what they are looking for and understand the data that a system is producing, even if they don't have an understanding about the development of MCS Systems.
@@ -98,7 +129,13 @@ To test if these things are working as needed, I will be doing Integration Tests
 ### Integration Tests
 
 ### Google Lighthouse (Performance testing and more)
-Google lighthouse runs a number of diagnostics on your web application to see how it performs and which best practices it misses. I have setup a lighthouse server and am running lighthouse in the integration workflow. More about this can be read in the [Continuous Integration](https://github.com/crazyvinvin/Portfolio-S3/edit/main/README.md#integration) chapter of this portfolio. Lighthouse detected a few issues with my project, for example it noticed that I was still getting and sending some data over the http protocol instead of the https protocol. This was a simple fix but could have been a major issue if this data was user data.
+Google lighthouse runs a number of diagnostics on your web application to see how it performs and which best practices it misses. I have setup a lighthouse server and am running lighthouse in the integration workflow. More about this can be read in the [Continuous Integration](https://github.com/crazyvinvin/Portfolio-S3/edit/main/README.md#integration) chapter of this portfolio.
+
+Lighthouse detected a few issues with my project, for example it noticed that I was still getting and sending some data over http instead of https. Which means the data is not encrypted and can be read by almost anyone. This was a simple fix but could have been a major issue if this data was user data. After fixing this issue, the scores came out pretty good:
+
+![Lighthouse Result](images/lighthouse_result.png "ligthouse_result")
+
+These results will ofcourse change every time changes are made to the project. Scores for all the integrations of code can be viewed [here](https://lighthouse.mcsynergy.nl/app/projects/mcsanalyser-frontend/dashboard)
 
 ### User Experience Tests
 
@@ -289,11 +326,12 @@ When working in a team, you're working with people that are different from eacho
 ### Differences at my job
 When I'm working at Jumbo it's often my job to manage our team of employees and make sure we complete the things that have to be done so that we can close the store nice and clean at the end of the day. Over the day I talk to a lot of different employees. Some people I work with are new and need a lot of support, while others are older and have been working at Jumbo for years. The people that have been working at Jumbo for a while often know what they have to do when they arrive, however the newer people need a lot more explanation, which isn't a problem, as long as your speaking the same language.
 
-A few weeks ago we had a new employee join the team. She is from bulgaria and her dutch (my main language) and english aren't great yet. I find it really exciting to work with her, explaining important information to eachother is a puzzle we both find interesting to solve. Especially when dealing with customers it can be difficult sometimes. She first has to explain to the customer that she doesn't speak dutch and then she has to wave in a dutch speaking employee for assistance. However, it's amazing to have a person on the team so different from others as she comes with new ideas to improve and brings something fresh to the workplace.
+A few weeks ago we had a new employee join the team. She is from bulgaria and her dutch (my main language) and english aren't great yet. I find it really exciting to work with her, explaining important information to eachother is a puzzle we both find interesting to solve. However, 
+when it comes to dealing with customers it can be difficult sometimes. She first has to explain to the customer that she doesn't speak dutch and then she has to wave in a dutch speaking employee for assistance. Nontheless, it's amazing to have a person on the team so different from others as she comes with new ideas to improve and brings something fresh to the workplace.
 
 I don't think differences in "culture" should ever be a problem. As long as people keep communicating and are open to change.
 
-## Professionality
+## Professionalism
 During the Semester, students are expected to "act in a professional manner during software development and learning by actively asking and applying feedback from stakeholders[...]" (canvas, 2022). To achieve this, I have worked with my teachers and feedpulse and done retrospectives every sprint with the group I worked with for the group project.
 
 ### Feedpulse
@@ -304,6 +342,6 @@ When working on a project it's important to keep communicating and reflecting wi
 Above is a checkpoint in feedpulse that shows how I kept track of conversations with my teachers.
 
 ### Retrospectives
-When working with multiple stakeholders, teammembers and teachers, it's important to reflect every short period of time. A more extensive explanation of why retrospectives are important can be found in my [research document on "working agile"](https://github.com/crazyvinvin/Portfolio-S3/blob/main/Research/Agile.md).
+When working with multiple stakeholders, teammembers and teachers, it's important to reflect every short period of time. A more extensive explanation on why retrospectives are important can be found in my [research document on "working agile"](https://github.com/crazyvinvin/Portfolio-S3/blob/main/Research/Agile.md).
 
 After every sprint (often 3 weeks) our team performs a retrospective. Often with stakeholders or teachers, but sometimes with just the team. I like the way this changes up the retrospectives a bit, however it makes it more difficult to compare the outcome with the sprint before as the retrospective itself has changed.
