@@ -2,29 +2,35 @@
 
 ## Table of Contents
 - [Portfolio S3](#portfolio-s3)
-  * [Table of Contents](#table-of-contents)
   * [Introduction](#introduction)
-- [F1 Guesser](#f1-guesser)
-  * [Project Description](#project-description)
-  * [Full-Stack Web Application](#full-stack-web-application)
-  * [Requirements](#requirements)
-  * [Conclusion](#conclusion)
-- [Project MCS Analyser](#project-mcs-analyser)
-  * [Project Description](#project-description-1)
-    + [But what is MCS-CC?](#but-what-is-mcs-cc)
+  * [Individual Project: F1 Guesser](#individual-project--f1-guesser)
+  * [Individual Project Description: MCS Analyser](#individual-project-description--mcs-analyser)
+    + [But what is MCS-CC?](#but-what-is-mcs-cc-)
     + [User Stories](#user-stories)
-  * [Full-Stack Web Application](#full-stack-web-application-1)
+  * [Bussiness process](#bussiness-process)
+  * [Full-Stack Web Application](#full-stack-web-application)
     + [Front End](#front-end)
     + [Back End](#back-end)
     + [Persistence](#persistence)
   * [External Services](#external-services)
     + [Systems and Services explained](#systems-and-services-explained)
   * [Project Management](#project-management)
+    + [Group project management](#group-project-management)
+    + [Individual Project management](#individual-project-management)
   * [Quality Assurance](#quality-assurance)
-  * [Continuous Integration & Delivery](#continuous-integration--delivery)
+    + [Integration Tests](#integration-tests)
+    + [Google Lighthouse (Performance testing and more)](#google-lighthouse--performance-testing-and-more-)
+    + [User Experience Tests](#user-experience-tests)
+  * [Continuous Integration & Delivery](#continuous-integration---delivery)
     + [Integration](#integration)
     + [Delivery](#delivery)
   * [Deployment](#deployment)
+  * [Ethics](#ethics)
+  * [Cultural Differences](#cultural-differences)
+    + [Differences at my job](#differences-at-my-job)
+  * [Professionalism](#professionalism)
+    + [Feedpulse](#feedpulse)
+    + [Retrospectives](#retrospectives)
 
 ## Introduction
 This semester has the goal to work on a group project for an external company and to build a Full-Stack web application as an individual project. Together with these projects there are many learning outcomes that should be achieved. This document will show how I worked towards my so called LO’s.
@@ -117,16 +123,17 @@ I took up the role as scrum master this semester, acting as the communication po
 The hardest thing I found as a scrum master has been to keep the team motivated at all times. When a delivery to our stakeholders doesn't go as well as hoped, I found that people would start to distract themselves. Keeping them focused on what had to be done to fix things or to create a better delivery next sprint could sometimes be very difficult. 
 
 ### Individual Project management
-
-
-TODO ------------------ TODO
-Research document github issues
+TODO  
+github issues, stakeholders, more of a kanban style
 
 ## Quality Assurance
 Assuring the quality of software is one of the most important things in software development as it helps you to find problems before they become an issue. There are many different subjects in software which "the quality can be assured of". For my project a few things are important. First of all, the data that is displayed in the graphs should be correct and not be misleading. Both of these things could lead to misunderstanding of the data that a system produces, which would be a problem for the further development of the system. Second, a user (player from the minecraft server) should be able to easily find what they are looking for and understand the data that a system is producing, even if they don't have an understanding about the development of MCS Systems.
 To test if these things are working as needed, I will be doing Integration Tests and User Experience Tests. I will also be running performance and accessibility tests through google lighthouse, because this will help to find issues with the user experience and google lighthouse can also scan for vulnerability issues.
 
 ### Integration Tests
+TODO  
+tests integreren met workflows  
+uitwerken in portfolio
 
 ### Google Lighthouse (Performance testing and more)
 Google lighthouse runs a number of diagnostics on your web application to see how it performs and which best practices it misses. I have setup a lighthouse server and am running lighthouse in the integration workflow. More about this can be read in the [Continuous Integration](https://github.com/crazyvinvin/Portfolio-S3/edit/main/README.md#integration) chapter of this portfolio.
@@ -138,6 +145,7 @@ Lighthouse detected a few issues with my project, for example it noticed that I 
 These results will ofcourse change every time changes are made to the project. Scores for all the integrations of code can be viewed [here](https://lighthouse.mcsynergy.nl/app/projects/mcsanalyser-frontend/dashboard)
 
 ### User Experience Tests
+Onderzoek is gedaan, ik moet het alleen nog uitwerken.
 
 ## Continuous Integration & Delivery
 Integrating new code into an application takes developers a lot of time. That's why I have automated the integration, delivery and deployment of new code. To automate this process I have created workflows with GitHub Actions. These workflows are triggerd on push or accepted pull requests on the development and main branches of the projects. There are workflows for building and testing the code, aswell as there are workflows for building and delivering docker images to a self-hosted docker registry.
@@ -319,6 +327,9 @@ server {
 ```
 !["Registry Container"](/images/RegistryDockerContainer.PNG)
 When I send a request to "https://registry.mcsynergy.nl", I want it to go to the registry. And when I send a request to "https://www.mcsynergy.nl", I want it to go to the front end container. All these subdomains point to the same IP Address, but NGINX handles them differently. I have also setup a secure SSL connection using certbot and lets encrypt. This will help with securing the data being send to and from the client while also scoring some extra SEO (Search Engine Optimization) points.
+
+## Ethics
+TODO
 
 ## Cultural Differences
 When working in a team, you're working with people that are different from eachother and from you. Sometimes this can cause problems, you can act in a way that is accepted and familiar by you but not by one or more members of your team. You're acting with a good heart, but they find it wrong or offensive. In my opinion, this isn't a difference in culture. It's a difference in people.
