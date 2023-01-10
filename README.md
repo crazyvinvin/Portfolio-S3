@@ -31,6 +31,7 @@
   * [Professionalism](#professionalism)
     + [Feedpulse](#feedpulse)
     + [Retrospectives](#retrospectives)
+    + [Reflection](#reflection)
 
 ## Introduction
 This semester has the goal to work on a group project for an external company and to build a Full-Stack web application as an individual project. Together with these projects there are many learning outcomes that should be achieved. This document will show how I worked towards my so called LO’s.
@@ -356,3 +357,7 @@ Above is a checkpoint in feedpulse that shows how I kept track of conversations 
 When working with multiple stakeholders, teammembers and teachers, it's important to reflect every short period of time. A more extensive explanation on why retrospectives are important can be found in my [research document on "working agile"](https://github.com/crazyvinvin/Portfolio-S3/blob/main/Research/Agile.md).
 
 After every sprint (often 3 weeks) our team performs a retrospective. Often with stakeholders or teachers, but sometimes with just the team. I like the way this changes up the retrospectives a bit, however it makes it more difficult to compare the outcome with the sprint before as the retrospective itself has changed.
+
+### Reflection
+TODO  
+how aws affected job as scrum master and what I learned from this
