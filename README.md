@@ -26,12 +26,19 @@
     + [Delivery](#delivery)
   * [Deployment](#deployment)
   * [Ethics](#ethics)
+    + [The Colleague Tracker for IO](#the-colleague-tracker-for-io)
+      - [Collection of Data](#collection-of-data)
+      - [Data Protection](#data-protection)
+    + [Ethics within our team](#ethics-within-our-team)
   * [Cultural Differences](#cultural-differences)
+    + [The Hofstede Cultural Framework](#the-hofstede-cultural-framework)
     + [Differences at my job](#differences-at-my-job)
+    + [My opinion](#my-opinion)
   * [Professionalism](#professionalism)
     + [Feedpulse](#feedpulse)
     + [Retrospectives](#retrospectives)
     + [Reflection](#reflection)
+
 
 ## Introduction
 This semester has the goal to work on a group project for an external company and to build a Full-Stack web application as an individual project. Together with these projects there are many learning outcomes that should be achieved. This document will show how I worked towards my so called LO’s.
