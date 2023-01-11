@@ -7,7 +7,7 @@
   * [Individual Project Description: MCS Analyser](#individual-project-description--mcs-analyser)
     + [But what is MCS-CC?](#but-what-is-mcs-cc-)
     + [User Stories](#user-stories)
-  * [Bussiness process](#bussiness-process)
+  * [Business process](#business-process)
   * [Full-Stack Web Application](#full-stack-web-application)
     + [Front End](#front-end)
     + [Back End](#back-end)
@@ -59,8 +59,8 @@ I’ve created a few user stories to make the project and its functionality more
 - US-05: As a user I want to be able get a description of a system about it’s service and purpose so that I can understand the data more easily.
 - US-06: As a user I want to be able to create a custom graph with all the data available so that I can compare different systems with each other.
 
-## Bussiness process
-When building software, you're always doing this with a goal. To automate or improve a process that's happening somewhere or to create a new process that wasn't possible without your software. To visualize all the different parts and blocks of a process, a bussiness process model (or BPM for short) can be created. In the world of software a BPM can show how software improves (or worsens) a process.
+## Business process
+When building software, you're always doing this with a goal. To automate or improve a process that's happening somewhere or to create a new process that wasn't possible without your software. To visualize all the different parts and blocks of a process, a business process model (or BPM for short) can be created. In the world of software a BPM can show how software improves (or worsens) a process.
 
 I will be creating a BPM about how we analyse MCS Systems now and a BPM about the process after the software for my individual project is build. This to visualize the difference between before and after the software is build.
 
@@ -124,7 +124,7 @@ I took up the role as scrum master this semester, acting as the communication po
 The hardest thing I found as a scrum master has been to keep the team motivated at all times. When a delivery to our stakeholders doesn't go as well as hoped, I found that people would start to distract themselves. Keeping them focused on what had to be done to fix things or to create a better delivery next sprint could sometimes be very difficult. 
 
 ### Individual Project management
-TODO  
+TODO
 github issues, stakeholders, more of a kanban style
 
 ## Quality Assurance
@@ -132,9 +132,13 @@ Assuring the quality of software is one of the most important things in software
 To test if these things are working as needed, I will be doing Integration Tests and User Experience Tests. I will also be running performance and accessibility tests through google lighthouse, because this will help to find issues with the user experience and google lighthouse can also scan for vulnerability issues.
 
 ### Integration Tests
-TODO  
-tests integreren met workflows  
-uitwerken in portfolio
+Integration testing is important when building software that has to be stable and accurate. Using integration tests you can not only find problems in your software now, but also in the future. When building a new feature, something old might break. These tests can help to visualize these issues so the developers can resolve the problem before the software gets delivered. 
+
+While creating my tests, two of my tests that had to do with the accumulation of data actually failed. After some more testing, it looked like the accumulation method I wrote, did the exact opposite or double of what I asked it to do. Later I found out this was because I was calling the method a second time somewhere, which was definitely not meant. Problems like this are hard to find out without building some simple tests.
+
+![Accumulation Test](images/accumulationTest.png "accumulation_test")
+
+I have also added the execution of the integration tests to the continuous integration workflow. Read more about that [here](#integration).
 
 ### Google Lighthouse (Performance testing and more)
 Google lighthouse runs a number of diagnostics on your web application to see how it performs and which best practices it misses. I have setup a lighthouse server and am running lighthouse in the integration workflow. More about this can be read in the [Continuous Integration](https://github.com/crazyvinvin/Portfolio-S3/edit/main/README.md#integration) chapter of this portfolio.
@@ -187,7 +191,11 @@ jobs:
       - name: Build code
         run: npm run build
 ```
-The integration workflow has a job that builds the application. If the code has build errors, the workflow will fail which will be visible on github and it will also be emailed to the developer. The integration workflow will also be running a test job.
+The integration workflow has a job that builds the application. If the code has build errors, the workflow will fail which will be visible on github and it will also be emailed to the developer.
+
+There is also an integration workflow for the back end of my project. This workflow has a job that builds the project. When building a project with maven, it also executes the tests that are found in the project. 
+
+![Integration Workflow Backend](images/IntegrationTests.PNG)
 
 ### Delivery
 To deliver new code, a few steps have to be processed:
@@ -330,10 +338,44 @@ server {
 When I send a request to "https://registry.mcsynergy.nl", I want it to go to the registry. And when I send a request to "https://www.mcsynergy.nl", I want it to go to the front end container. All these subdomains point to the same IP Address, but NGINX handles them differently. I have also setup a secure SSL connection using certbot and lets encrypt. This will help with securing the data being send to and from the client while also scoring some extra SEO (Search Engine Optimization) points.
 
 ## Ethics
-TODO
+When using an application like WhatsApp, the app influences the way you live and act. By alarming you when a message comes in or giving you the ability to tell something to a huge group of people with a simple text message, the app doesn't just shape around your life, it shapes your life around it.
+
+As a software engineer you have the ability to create this influence in people's lifes. That is why you should be aware of the social and ethical issues in the development of software (TechTarget, 2023). There are many guidelines for ethical software engineering, for example [Code of Ethics by ACM](https://www.computer.org/education/code-of-ethics).
+
+### The Colleague Tracker for IO
+For our group project, we had to build an app that would help employees of IO find their colleagues. This means we will be tracking the location of employees and showing it to others. With things like this a lot of ethical problems and questions come up.
+
+#### Collection of Data
+Almost every application collects data. Our application does this too, we're collecting personal info such as names and email addresses from the company and from google, but the most important data is ofcourse the location. We're tracking users that are connected to the wifi network of IO and we're asking users to let the application know where they are.
+
+We received a legal document from IO that showed us how we must handle their employees data safely. We had to show users what data we are collecting and how we are using and protecting it. We have added terms and conditions for use of the application, these terms and conditions say that you agree to the fact that your location will be visible to other colleagues and must be accepted before being able to register and login. 
+
+We made the decision to not allow users to view their colleague's location without showing their own location. There is also the ability to add their location manually instead of automatic, this is so that users have more control over their own data.
+
+#### Data Protection
+If personal data falls into the wrong hands, people could become victims of identity theft and more (ico, 2023). To prevent exposure of user data, we have put a certain amount of protection in place.  
+
+First of all, only IO employees are able to create an account in the app and thereby use the app. During registration the employee has to give their IO email address, we'll then send an email to confirm that the address is actually theirs. If the email address given is not an IO email address, no email will be send.
+
+Second, the application will be hosted within the AWS infrastructure of IO. This means that the DevOps employees of IO will have full control over the security of the application. These people are experts in securing applications, so the data will be in good hands.
+
+Finally, to request user data from the API, a unique token is needed. These tokens can only be gotten at google and will be verified by the API. Without the right token, you'll not get any data. This is to prevent unauthorized users from accessing data they should not possess.
+
+### Ethics within our team
+"Software engineers shall be fair to and supportive of their colleagues." (Code of Ethics by ACM, 2023). This is one of the principles by from Code of Ethics. To visualize any violations of this principle, we held a peer review at the beginning of the semester. In my opinion, we should have done one or two more peer reviews throughout the semester, just to see if anything changed.  
+It's important to always stay supportive of your teammembers/colleagues. Within our group I helped people out with for example setting up CI/CD pipelines for the individual projects. In the same way I received help from my peers aswell.
+
+**Sources**
+- https://fellow.app/blog/engineering/engineering-everything-you-need-to-know-about-software-engineering-ethics/
+- https://www.techtarget.com/searchsoftwarequality/tip/5-examples-of-ethical-issues-in-software-development
+- https://www.computer.org/education/code-of-ethics
+- https://ico.org.uk/for-organisations/sme-web-hub/the-benefits-of-data-protection-laws/#:~:text=And%20you%20have%20to%20protect,discrimination%20or%20even%20physical%20harm.
 
 ## Cultural Differences
-When working in a team, you're working with people that are different from eachother and from you. Sometimes this can cause problems, you can act in a way that is accepted and familiar by you but not by one or more members of your team. You're acting with a good heart, but they find it wrong or offensive. In my opinion, this isn't a difference in culture. It's a difference in people.
+Working with people abroad or when working with other people in general, some cultural differences may apply. Culture is the characteristics and knowledge of a particular group of people, encompassing language, religion, cuisine, social habits, music and arts (livescience, 2023). To understand what differences there are between you and the people you work with, you can apply the [Hofstede Cultural Framework](https://www.youtube.com/watch?v=TX0fUAhBAfc).
+
+### The Hofstede Cultural Framework
+The Hofdstede Cultural Framework exists of six dimensions to categorize different groups of people (Hofstede Insights, 2023). These different dimensions are: Power Distance, Individual versus Collectivism, Masculinity versus Femininity, Uncertainty avoidance, Long Term Orientation versus Short Term Orientation and Indulgence versus Restraint. With these dimensions, different groups of people can be catogorized, aswell as visualize the differences between these groups. 
 
 ### Differences at my job
 When I'm working at Jumbo it's often my job to manage our team of employees and make sure we complete the things that have to be done so that we can close the store nice and clean at the end of the day. Over the day I talk to a lot of different employees. Some people I work with are new and need a lot of support, while others are older and have been working at Jumbo for years. The people that have been working at Jumbo for a while often know what they have to do when they arrive, however the newer people need a lot more explanation, which isn't a problem, as long as your speaking the same language.
@@ -341,17 +383,26 @@ When I'm working at Jumbo it's often my job to manage our team of employees and 
 A few weeks ago we had a new employee join the team. She is from bulgaria and her dutch (my main language) and english aren't great yet. I find it really exciting to work with her, explaining important information to eachother is a puzzle we both find interesting to solve. However, 
 when it comes to dealing with customers it can be difficult sometimes. She first has to explain to the customer that she doesn't speak dutch and then she has to wave in a dutch speaking employee for assistance. Nontheless, it's amazing to have a person on the team so different from others as she comes with new ideas to improve and brings something fresh to the workplace.
 
-I don't think differences in "culture" should ever be a problem. As long as people keep communicating and are open to change.
+Going back to the Hofstede Cultural Framework, the dimension that applies most in this situation is probably the power distance. The power distance dimension refers to how openly a society or culture either accepts or rejects differences between people like hierarchies in the workplace, in politics and so on (Business School 101, 2023). It's clear she doesn't comment on things as quick as others might do. However, there aren't many people to compare her with in my case, as most new employees are a lot younger than she is.
+
+### My opinion
+When working in a team, you're working with people that are different from eachother and from you. Sometimes this can cause problems, you can act in a way that is accepted and familiar by you but not by one or more members of your team. You're acting with a good heart, but they find it wrong or offensive. In my opinion, this isn't a difference in culture. It's a difference in people. I don't think differences in "culture" should ever be a problem, as long as people keep communicating and are open to change.
+
+**Sources**
+- https://www.livescience.com/21478-what-is-culture-definition-of-culture.html
+- https://www.hofstede-insights.com/models/national-culture/
+- https://www.youtube.com/watch?v=TX0fUAhBAfc -> Hofstede Cultural Framework, Business School 101
+- https://www.youtube.com/watch?v=xdzj0wIMatQ -> Cultural absolutism, relativism and pluralism
 
 ## Professionalism
-During the Semester, students are expected to "act in a professional manner during software development and learning by actively asking and applying feedback from stakeholders[...]" (canvas, 2022). To achieve this, I have worked with my teachers and feedpulse and done retrospectives every sprint with the group I worked with for the group project.
+During the Semester, students are expected to "act in a professional manner during software development and learning by actively asking and applying feedback from stakeholders[...]" (canvas, 2023). To achieve this, I have worked with my teachers and feedpulse and done retrospectives every sprint with the group I worked with for the group project.
 
 ### Feedpulse
 When working on a project it's important to keep communicating and reflecting with your stakeholders or in my case, my teachers. During the semester I had discussions with them about my projects and progress. After these conversations, I write down in feedpulse (A tool in Canvas) what I did, what i'll be doing in the next few weeks and what my teacher's thoughts are on these things.
 
 ![Feedpulse Example](images/feedpulse_example.PNG "feedpulse_example")
 
-Above is a checkpoint in feedpulse that shows how I kept track of conversations with my teachers.
+Above is a checkpoint in feedpulse that shows how I kept track of conversations with my teachers. I selected this checkpoint, because it gives a clear view of how I used Feedpulse this semester. There are many more checkpoints which can be viewed on Canvas.
 
 ### Retrospectives
 When working with multiple stakeholders, teammembers and teachers, it's important to reflect every short period of time. A more extensive explanation on why retrospectives are important can be found in my [research document on "working agile"](https://github.com/crazyvinvin/Portfolio-S3/blob/main/Research/Agile.md).
@@ -361,3 +412,10 @@ After every sprint (often 3 weeks) our team performs a retrospective. Often with
 ### Reflection
 TODO  
 how aws affected job as scrum master and what I learned from this
+
+scrummaster role went good  
+aws came in  
+way more difficult then we thought  
+asked help from other students and employees of IO  
+aws started to take up so much time that scrummaster role suffered.  
+wilde meer aandacht besteden aan de scrummaster taken maar kwam er niet aan toe.  
