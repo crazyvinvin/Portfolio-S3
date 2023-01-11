@@ -157,7 +157,37 @@ Lighthouse detected a few issues with my project, for example it noticed that I 
 These results will ofcourse change every time changes are made to the project. Scores for all the integrations of code can be viewed [here](https://lighthouse.mcsynergy.nl/app/projects/mcsanalyser-frontend/dashboard)
 
 ### User Experience Tests
-Onderzoek is gedaan, ik moet het alleen nog uitwerken.
+A good user experience is important to fulfill the user's needs as it aims to provide positive experiences that keep a user loyal to the product or brand (UXPlanet, 2023). For my individual project I have frequent contact with all of my defined end users (Because there are only 4). This gives me the ability to constantly adapt the what my users need. However, to really get a good idea of the problems on my website, I had to do some kind of usability test. 
+
+There are many kinds of usability tests out there. For my project I ran a usability test that looked like Guerilla testing and Lab usability testing. I selected one of my endusers to go through my website and perform a few tasks while I would keep my eyes on them and write anything down that went right or wrong. This enduser was not selected by random, two of my endusers are (student) software developers and already know my website, while another studied illustration and media design and has already given feedback on my website multiple times. In the end it came down to one person, who was perfect for helping me with my project. 
+
+We have a portal website to act as a hub to easily redirect to all of our other services. This is where we started. We then went through a few tasks. She would perform the tasks and explain her thoughts to me. I would write down the things that went wrong and the things that went right.
+
+One of the things that went wrong was the task: "Please tell me how many melons were produced in the round that ended at 08:01:58." She moved her mouse to the 08:01 and started moving up following the line. Then when she met the first point close to it, she read out the value. However, she should have gone further up because she now had the datapoint of 08:15. She said that if the time axis would be displayed at top and bottom instead of just the bottom, she would have probably gotten the right one.  
+Here is the old version:
+![oldMCSGraph](images/mcsGraph.PNG "old_mcs_graph")
+
+And here is the new version:
+![newMCSGraph](images/newMCSGraph.PNG "new_mcs_graph")
+As you can see an extra axis to the top has been added.
+
+The rest of the test went pretty smooth, which was expected. I had been collecting and applying feedback of my other endusers all semester long, so this was a nice confirmation that everything worked out. 
+
+There was however one thing that did surprise me. When asked to go back to the portal, she immediately found out the logo was clickable and was a redirect to the portal. This went wrong in the usability test of Josian van Efferen, who has also created a service for MCS. His logo was a bit smaller and more pushed into the corner then mine, which might have had an effect on the interaction for the user. 
+
+Here is the logo of MCS Analyser:
+![logo MCSA](images/logoMCSAPortfolioImage.PNG "logo_mcsa")
+
+And here is the logo of MCS Turtle Tracker:
+![logo MCST](images/logoMCSTPortfolioImage.PNG "logo_mcst")
+
+Take a better look at the logo's at [MCS Analyser](https://analyser.mcsynergy.nl/production-graphs) and [MCS Turtle Tracker](https://turtletracker.mcsynergy.nl/).
+
+
+**Sources**
+- https://uxplanet.org/the-importance-of-user-experience-design-988faf6ddca2#:~:text=User%20experience%20is%20important%20because,most%20conducive%20to%20business%20success.
+- https://www.hotjar.com/usability-testing/methods/
+
 
 ## Continuous Integration & Delivery
 Integrating new code into an application takes developers a lot of time. That's why I have automated the integration, delivery and deployment of new code. To automate this process I have created workflows with GitHub Actions. These workflows are triggerd on push or accepted pull requests on the development and main branches of the projects. There are workflows for building and testing the code, aswell as there are workflows for building and delivering docker images to a self-hosted docker registry.
