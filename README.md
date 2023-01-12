@@ -106,7 +106,7 @@ To create a better understanding of how the different MCS Services interact with
 In this document there has been a lot of talk about MCS Systems and MCS Services, but what is the difference? MCS Systems are the systems inside the Minecraft server. For example a farm that produces melons and pumpkins is called an MCS System. All the systems are registered at the MCS Systems API. MCS Services are the things we build outside of the Minecraft server. For example the MCS Analyser and the MCS Turtle Tracker are both MCS Services.
 
 ## Project Management
-When working on a project, no matter the size, management is important. However, the way one project should be managed can be really different from another project. Things like teamsize, stakeholders and  time schedules can have a huge influence on the project and will thereby change the way the project should be managed. This semester, I did a group project and an individual project and I found out that these projects had to be managed very different from eachother.
+When working on a project, no matter the size, management is important. However, the way one project should be managed can be really different from another project. Things like teamsize, stakeholders and time schedules can have a huge influence on the project and will thereby change the way the project should be managed. This semester, I did a group project and an individual project and I found out that these projects had to be managed very different from eachother.
 
 ### Group project management
 With a team of 5 software engineering students we did a project for IO, an external company that helps companies grow digitally. We were assigned two stakeholders that would act as our customers. These gave us the task to create an app that would help them find their colleagues more quickly when needed.
@@ -131,8 +131,20 @@ I took up the role as scrum master this semester, acting as the communication po
 The hardest thing I found as a scrum master has been to keep the team motivated at all times. When a delivery to our stakeholders doesn't go as well as hoped, I found that people would start to distract themselves. Keeping them focused on what had to be done to fix things or to create a better delivery next sprint could sometimes be very difficult. 
 
 ### Individual Project management
-TODO
-github issues, stakeholders, more of a kanban style
+Management of my individual project looks a lot different from the group project, but is still very interesting. My project is a project that will be used by players from the minecraft server. I know all the players very will, which made it possible to continuously release versions of my project and receive feedback on it from them. They could submit issues on github such as: bugs, feature requests and UI changes. This led to me always being able to adapt what my users actually needed. Here is a good example of an issue submitted by one of my users:
+
+![Github Issue Example](images/GithubIssueExample.PNG "github_issue_example")
+*This issue was submitted by @lazyjesjes -> Jesse, media designer.
+
+This is issue is an example of a feature request, or "enhancement". As you can see the user comes with an idea and adds why this would be useful to a user. I asked my users to do it like this, so that I won't be adding random features without knowing what the endgoal is.
+
+I also used github issues as a way to keep track of what I'm working on for the project. This way my users knew what to expect in the upcoming releases. This also helped me to document a lot of changes to my project, so that I could come back to it later if anything would have to be changed. Here is a good example of an issue used for documenting: 
+
+![Github Documenting Issue Example](images/GithubDocumentingIssueExample.PNG "github_documenting_issue_example")
+
+There are many more submitted issues that can be found on the project's repository page: [here](https://github.com/MC-Synergy/MCSAnalyser-FrontEnd/issues?q=is%3Aissue).
+
+For this project I have worked more in a Kanban style. Not working per sprint, but per issue. Working in a kanban style has been perfect for this project, because there are no time limitations. Except ofcourse the Semester, but the project doesn't have to be "finished" for this. 
 
 ## Quality Assurance
 Assuring the quality of software is one of the most important things in software development as it helps you to find problems before they become an issue. There are many different subjects in software which "the quality can be assured of". For my project a few things are important. First of all, the data that is displayed in the graphs should be correct and not be misleading. Both of these things could lead to misunderstanding of the data that a system produces, which would be a problem for the further development of the system. Second, a user (player from the minecraft server) should be able to easily find what they are looking for and understand the data that a system is producing, even if they don't have an understanding about the development of MCS Systems.
@@ -447,12 +459,20 @@ When working with multiple stakeholders, teammembers and teachers, it's importan
 After every sprint (often 3 weeks) our team performs a retrospective. Often with stakeholders or teachers, but sometimes with just the team. I like the way this changes up the retrospectives a bit, however it makes it more difficult to compare the outcome with the sprint before as the retrospective itself has changed.
 
 ### Reflection
-TODO  
-how aws affected job as scrum master and what I learned from this
+Reflecting back on the semester is one of the most important things to learn in my opinion. It doesn't matter if you pass or fail, without a reflection you will learn less from your mistakes and wins. That's why I have written a short reflection about my work in Semester 3.
 
-scrummaster role went good  
-aws came in  
-way more difficult then we thought  
-asked help from other students and employees of IO  
-aws started to take up so much time that scrummaster role suffered.  
-wilde meer aandacht besteden aan de scrummaster taken maar kwam er niet aan toe.  
+#### What went well?
+At the beginning of the semester I was going to build a project about formula 1, after a few weeks I decided to change projects to the MCS Analyser project I did. This was scary at first, because it would make me fall behind. However, I'm super glad I did change projects as it had me excited and motivated about my individual project throughout the semester. With future projects, I'll definitely do my best to find an idea that motivates my this did. 
+
+I also think we did pretty good in the process of our group project. The communication in the group has been outstanding as we were pretty much always on the same level. Sometimes discussions came up about different things, but these were quickly solved by listening to eachother. 
+
+#### What will I be doing better next time?
+The problem with the high motivation for my individual project and the hard work we had to put in for the group project (read more about this in the [How did I do as scrummaster?](#how-did-i-do-as-scrummaster-in-my-opinion) part), was that my portfolio started to fall behind. I would add things to my portfolio weeks after researching and building things. This would cost me a lot of extra time. I was also really procrastinating researching and writing about the LO's for the group project, like Cultural differences, ethics and project management. This gave me the feeling I couldn't go to my teachers, because I didn't have anything to show in my portfolio. However, Jean Paul explained to me how you should ALWAYS communicate with your teachers, even if you have nothing to show. In the upcoming semesters, I will try to communicate with my teachers more on a timed basis (like every week or 2) instead of when I had something done (like after writing a new part to my portfolio). I hope this will help me get more in the rithm of talking to my teachers throughout the semester, instead of mostly doing it at the end.
+
+#### How did I do as scrummaster? (in my opinion)
+In the beginning of the semester, me being the scrummaster went pretty good. We did have to really get used to the tools we were using (for example Jira) and how our stakeholders wanted to communicate. 
+
+Around Sprint 3, we were assigned the task to host our project and database on the AWS infrastructure of IO. I had taken this task uppon me and started to work with AWS for the first time. Setting up the hosting in AWS came out to be a much larger task than we had first expected it to be. I quickly asked a group member to start working with me as it was taking up too much time. We asked help from other students and employees of IO, which definitely helped, but there was still a lot of work left. As we only had two days a week for the group project, the AWS task started to take up so much time that my role as scrummaster suffered. I wanted to give more attention to the tasks I had as scrummaster. Like communicating with our stakeholders, keeping up the Jira board and prepare standups and retrospectives. We wanted to assign more people to the task, but explaining the tools to them would cost a lot of time as noone had any experience with AWS. We also had only one account to work from, so working with more then 2 people wouldn't have really been that useful.
+
+I think that I should have assigned the task to someone else as soon as we saw that it would be costing so much time. We could have also talked to our stakeholders about this problem and ask if they had any solutions for us.  
+There was also the idea to give someone else the role as scrummaster, however noone except me wanted to be scrummaster, so this wasnt really an option.
